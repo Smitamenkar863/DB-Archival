@@ -1,0 +1,388 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/19/2024 10:33:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KVITSPL-0390"
+  DTS:CreatorName="AzureAD\SmitaMenkar"
+  DTS:DTSID="{FF58354F-F1DD-4E92-8E01-685F9BDEF88F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Stockinfoaudit"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{AE2A34E6-FB32-4388-9946-137624956473}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+      DTS:ObjectName="SourceDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::source_dbname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::source_password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::source_servername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.196.9.88;User ID=sa;Initial Catalog=cosacs;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="Usb2SNzvbg=="
+            IV="HQlMb2+QzkE=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>HQlMb2+QzkHwD+sv1n5Q1ngkNeQiC3hbVUJrFubE2QHwA4nW7UXR639CYgSkwQxkfFSTCA+W0jLA7gEAsJyGlwcV4o52tLaIkDrGwu0+dzynFhWrf8ZmJpqd4mMxYCtbaBS9B9XiM6xDv2NvY42dRdZxEN5jU+ps</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{9C64AC26-38B0-46C2-B21C-390A9E2ADF33}"
+      DTS:ObjectName="dest_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">JMCosacsDBArchive</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{11C9B702-E1DD-4042-ACDA-9A28E3219A66}"
+      DTS:ObjectName="dest_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{99982987-B692-4608-A68C-6EAAD40D81CD}"
+      DTS:ObjectName="dest_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.88</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E343B99B-8F9A-4001-9D59-421DC8768DD1}"
+      DTS:ObjectName="source_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">cosacs</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{3A4F48E4-8325-474E-B33C-00598DAC9933}"
+      DTS:ObjectName="source_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{0CF0909D-0B44-445B-B88A-198EE0CD5DB7}"
+      DTS:ObjectName="source_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.88</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Add Contraint on stockinfoaudit table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{CCD93AB9-7E27-4DC7-8996-62B5CCF5A88E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Add Contraint on stockinfoaudit table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="ALTER TABLE [dbo].[StockInfoAudit] ADD  DEFAULT ((0)) FOR [RepossessedItem]&#xA;&#xA;ALTER TABLE [dbo].[StockInfoAudit] ADD  DEFAULT ((0)) FOR [SparePart]&#xA;&#xA;ALTER TABLE [dbo].[StockInfoAudit] ADD  DEFAULT ((0)) FOR [ID]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Copy one month  Stockinfoaudit Table Records"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{754B46E5-EF61-47B7-BE06-BB73852D8B7A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy one month  Stockinfoaudit Table Records"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="declare @Archivefromdate datetime &#xA;&#xA;select @Archivefromdate = ArchieveFromDate from ArchieveDBConfiguration where active = 1 and phase=1&#xA; &#xA; &#xA;&#xA;insert  into StockInfoAudit_New(&#xA;    Itemno,&#xA;Itemdescr1,&#xA;Itemdescr2,&#xA;Category,&#xA;Supplier,&#xA;ProdStatus,&#xA;SupplierCode,&#xA;Warrantable,&#xA;Itemtype,&#xA;WarrantyRenewalFlag,&#xA;Leadtime,&#xA;AssemblyRequired,&#xA;Taxrate,&#xA;DateChange,&#xA;ID,&#xA;SKU,&#xA;IUPC,&#xA;Class,&#xA;SubClass,&#xA;ColourName,&#xA;ColourCode,&#xA;QtyBoxes,&#xA;WarrantyLength,&#xA;VendorWarranty,&#xA;Brand,&#xA;VendorStyle,&#xA;VendorLongStyle,&#xA;VendorEAN,&#xA;RepossessedItem,&#xA;ItemPOSDescr,&#xA;SparePart&#xA;)&#xA;&#xA;select    Itemno,&#xA;Itemdescr1,&#xA;Itemdescr2,&#xA;Category,&#xA;Supplier,&#xA;ProdStatus,&#xA;SupplierCode,&#xA;Warrantable,&#xA;Itemtype,&#xA;WarrantyRenewalFlag,&#xA;Leadtime,&#xA;AssemblyRequired,&#xA;Taxrate,&#xA;DateChange,&#xA;ID,&#xA;SKU,&#xA;IUPC,&#xA;Class,&#xA;SubClass,&#xA;ColourName,&#xA;ColourCode,&#xA;QtyBoxes,&#xA;WarrantyLength,&#xA;VendorWarranty,&#xA;Brand,&#xA;VendorStyle,&#xA;VendorLongStyle,&#xA;VendorEAN,&#xA;RepossessedItem,&#xA;ItemPOSDescr,&#xA;SparePart  &#xA; from StockInfoAudit  where datechange &gt;= @Archivefromdate&#xA; &#xA; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Rename table as stockinfoaudit_archive"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D8626B3C-014B-45EA-A91B-9BA0E474A0A7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Rename table as stockinfoaudit_archive"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="sp_rename  'StockInfoAudit' , 'StockInfoAudit_Archive'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Rename table Stockinfoaudit"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DD2E7DAD-6D8A-4D3D-A465-D026B81268CB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Rename table Stockinfoaudit"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="sp_rename  'StockInfoAudit_New' , 'StockInfoAudit'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stockinfoaudit Done"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9715719A-0504-43DC-97D9-80A28BF85626}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stockinfoaudit Done"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Stockinfoaudit', 'Completed', GETDATE())&#xA;&#xA;&#xA;update ArchieveDBConfiguration   set archstatus='Completed'       where  phase=1 and active=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Stockinfoaudit Log Started"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{46A86D49-38B8-4A19-8FB6-2EC012439D07}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Stockinfoaudit Log Started"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{55938248-F88D-40EC-864E-24B9CCABDE0D}"
+          SQLTask:SqlStatementSource="INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Stockinfoaudit', 'Started', GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F91829C8-F48E-4921-A46F-8C0F0DDEB61A}"
+      DTS:From="Package\Stockinfoaudit Log Started"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Copy one month  Stockinfoaudit Table Records" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F8BBD97A-62F6-4A3F-A716-6F218A9B6B07}"
+      DTS:From="Package\Copy one month  Stockinfoaudit Table Records"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Rename table as stockinfoaudit_archive" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{4006DC91-EE2D-4B18-9BCF-33BB780D3627}"
+      DTS:From="Package\Rename table as stockinfoaudit_archive"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Rename table Stockinfoaudit" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1187FDC9-2003-4590-BC34-A181DB11DB93}"
+      DTS:From="Package\Rename table Stockinfoaudit"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Stockinfoaudit Done" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="254.666666666667,42.6666666666667"
+          Id="Package\Add Contraint on stockinfoaudit table"
+          TopLeft="77.8571425910507,411.981741613381" />
+        <NodeLayout
+          Size="300,42.6666666666667"
+          Id="Package\Copy one month  Stockinfoaudit Table Records"
+          TopLeft="37.6785717611866,170.553174501889" />
+        <NodeLayout
+          Size="266.666666666667,42.6666666666667"
+          Id="Package\Rename table as stockinfoaudit_archive"
+          TopLeft="60,255.561900958449" />
+        <NodeLayout
+          Size="214.666666666667,42.6666666666667"
+          Id="Package\Rename table Stockinfoaudit"
+          TopLeft="74.5833331160251,329.493647850288" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\Stockinfoaudit Done"
+          TopLeft="93.0952376020811,484.910309970185" />
+        <NodeLayout
+          Size="204,42.6666666666667"
+          Id="Package\Stockinfoaudit Log Started"
+          TopLeft="92.2321423768472,41.7380955646435" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="190.955357069017,84.4047622313102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,86.1484122705788"
+              Start="0,0"
+              End="0,78.6484122705788">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,78.6484122705788" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="190.50595254726,213.219841168556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.3420597898933"
+              Start="0,0"
+              End="0,34.8420597898933">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.8420597898933" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="193.333333333333,298.228567625116">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.4166668839749,31.2650802251724"
+              Start="0,0"
+              End="-11.4166668839749,23.7650802251724">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.6325401125862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.6325401125862"
+                    Point2="0,15.6325401125862"
+                    Point3="-4,15.6325401125862" />
+                  <mssgle:LineSegment
+                    End="-7.4166668839749,15.6325401125862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.4166668839749,15.6325401125862"
+                    Point2="-11.4166668839749,15.6325401125862"
+                    Point3="-11.4166668839749,19.6325401125862" />
+                  <mssgle:LineSegment
+                    End="-11.4166668839749,23.7650802251724" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="181.172618692386,372.160314516955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,112.74999545323"
+              Start="0,0"
+              End="0,105.24999545323">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.24999545323" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
