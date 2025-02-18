@@ -1,0 +1,1928 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2024 1:56:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KVITSPL-0390"
+  DTS:CreatorName="AzureAD\SmitaMenkar"
+  DTS:DTSID="{B7415285-6DB8-44E2-917B-C6450151C1AA}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Elmah_Error_Archive"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{3622216D-FD3D-4ACF-99D0-F9FD64F64B6B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{01230E33-6477-4E0D-BC0E-14E6E7265B16}"
+      DTS:ObjectName="DestinationDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::dest_dbname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::dest_password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::dest_servername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.196.9.82;User ID=sa;Initial Catalog=JMCosacsDBArchive;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="faXAm/3ZMQ=="
+            IV="9B8IuDHCAOk=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>9B8IuDHCAOmagJqULNLc/5SWHcLN4eGvPB6kLv2LOoUBHIX9aYvc905HAaKVlt/PnB690OvMBJ/0SMzQUm+KO7stH6Nqx0g4seSoVKodSIm3zrhuvfE5X5b11JU4bx5AFQJ8/NaQlYp9CBiaBYu3T2KfHGcUMuFn</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+      DTS:ObjectName="SourceDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::source_dbname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::source_password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::source_servername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.196.9.82;User ID=sa;Initial Catalog=cosacs;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="Ezvtw9gwHQ=="
+            IV="ufaeAUB+JWs=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>ufaeAUB+JWtQrp3pwyHRHG7YbK89rX5vT0IUYY1VQ4kbN6qOo7rWhgxDxhIpocgXT+Ow2JZ6/SZdX0VekpLlP+gE2PCXkTxb7umzKWkccKA9l0sS3zxSg/R3fZ96D+VwcwzC4skjdNDGgPEynAO8KSpMRySbVApI</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{AB82D9A9-7BB2-450A-8567-7A9E8B8468E7}"
+      DTS:ObjectName="dest_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">JMCosacsDBArchive</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{7EB46A16-C5AC-4C10-B7E7-199D8C04D097}"
+      DTS:ObjectName="dest_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{0AA2CF22-D974-4BAF-A98C-17BD40C146BF}"
+      DTS:ObjectName="dest_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.82</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{89C49DC5-D34E-404C-B97F-39D8BB1010E6}"
+      DTS:ObjectName="source_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">cosacs</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{5F7C99F7-4B40-4330-8271-134F8EBCB929}"
+      DTS:ObjectName="source_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{771ADF5F-AF42-46CC-B62F-4F4DDE7225C8}"
+      DTS:ObjectName="source_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.82</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{113A1AAC-28C5-41B9-A392-8EEE76AD397B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="LoopCounter">
+      <DTS:VariableValue
+        DTS:DataType="3">1</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{30C7E95D-1E9D-4B67-81F5-E63E44E33753}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaxIteration">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task for Elmah_error"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{646600A5-91A6-4A0E-AA86-EC83BD5D9998}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task for Elmah_error"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task for Elmah_error\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Elmah_error]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorId]"
+                      cachedDataType="guid"
+                      cachedName="ErrorId"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorId]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Application]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Application"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Application]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Host]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Host"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Host]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Type]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Type"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Message]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Message"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="User"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusCode]"
+                      cachedDataType="i4"
+                      cachedName="StatusCode"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TimeUtc]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="TimeUtc"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeUtc]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sequence]"
+                      cachedDataType="i4"
+                      cachedName="Sequence"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sequence]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AllXml]"
+                      cachedDataType="nText"
+                      cachedName="AllXml"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllXml]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorId]"
+                      dataType="guid"
+                      name="ErrorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Application]"
+                      dataType="wstr"
+                      length="60"
+                      name="Application" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Host]"
+                      dataType="wstr"
+                      length="50"
+                      name="Host" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="100"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="60"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                      dataType="wstr"
+                      length="500"
+                      name="Message" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User]"
+                      dataType="wstr"
+                      length="50"
+                      name="User" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                      dataType="i4"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeUtc]"
+                      dataType="dbTimeStamp"
+                      name="TimeUtc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sequence]"
+                      dataType="i4"
+                      name="Sequence" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllXml]"
+                      dataType="nText"
+                      name="AllXml" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task for Elmah_error\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Elmah_error_Archive]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ErrorId]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]"
+                      name="ErrorId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Application]"
+                      length="60"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]"
+                      name="Application"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Host]"
+                      length="50"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]"
+                      name="Host"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      length="100"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      length="60"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                      length="500"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                      name="Message"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User]"
+                      length="50"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]"
+                      name="User"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                      name="StatusCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeUtc]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]"
+                      name="TimeUtc"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sequence]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]"
+                      name="Sequence"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllXml]"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]"
+                      name="AllXml"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ErrorId]"
+                      dataType="guid"
+                      name="ErrorId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Application]"
+                      dataType="wstr"
+                      length="60"
+                      name="Application" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Host]"
+                      dataType="wstr"
+                      length="50"
+                      name="Host" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="100"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="60"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                      dataType="wstr"
+                      length="500"
+                      name="Message" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User]"
+                      dataType="wstr"
+                      length="50"
+                      name="User" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                      dataType="i4"
+                      name="StatusCode" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeUtc]"
+                      dataType="dbTimeStamp"
+                      name="TimeUtc" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sequence]"
+                      dataType="i4"
+                      name="Sequence" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllXml]"
+                      dataType="nText"
+                      name="AllXml" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorId]"
+                      dataType="guid"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorId]"
+                      name="ErrorId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Application]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Application]"
+                      name="Application" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Host]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Host]"
+                      name="Host" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                      name="Message" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User]"
+                      name="User" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                      name="StatusCode" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeUtc]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeUtc]"
+                      name="TimeUtc" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sequence]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sequence]"
+                      name="Sequence" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllXml]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllXml]"
+                      name="AllXml" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task for Elmah_error.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task for Elmah_error\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task for Elmah_error\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Elmah_Error_archive Table source"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{E94B137E-E153-413D-9066-75BDFFCE9A73}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Elmah_Error_archive Table source"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+          SQLTask:SqlStatementSource="drop table ELMAH_Error_Archive" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete one month data from Table destination"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{614A780E-0319-4DF8-AC78-7A5699BF868C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete one month data from Table destination"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{01230E33-6477-4E0D-BC0E-14E6E7265B16}"
+          SQLTask:SqlStatementSource="declare @Archivefromdate datetime &#xA;select @Archivefromdate = ArchieveFromDate from ArchieveDBConfiguration where active = 1 and phase=1&#xA;&#xA;&#xA;&#xA;&#xA;delete from ELMAH_Error where timeutc&gt; =@Archivefromdate;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Elmah_error archive Log Started"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A5D61AF7-5DC3-497B-976D-69C9BFF608E0}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Elmah_error archive Log Started"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+          SQLTask:SqlStatementSource="&#xA;&#xA;INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Elmah_Error', 'Elmah_Error_archive Started', GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Elmah_Error Log Done"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B55A5D3C-53F6-4553-9EC2-EFE948F7BA79}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Elmah_Error Log Done"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+          SQLTask:SqlStatementSource="INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Elmah_Error', 'Elmah_Error_Archive Completed', GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\For Loop Container"
+      DTS:AssignExpression="@LoopCounter = @LoopCounter+1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="For Loop Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{937f24c9-dddd-4f67-8746-9b21ebcc7b26}"
+      DTS:EvalExpression="@LoopCounter&lt;= @MaxIteration"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@LoopCounter= 1"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="For Loop Container">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{f180cd86-2260-4875-9e4f-9b1e525d0836}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\For Loop Container\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[ELMAH_Error]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DestinationDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[DestinationDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ErrorId]"
+                          cachedDataType="guid"
+                          cachedName="ErrorId"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorId]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Application]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Application"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Application]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Host]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Host"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Host]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Type]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Type"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                          cachedDataType="wstr"
+                          cachedLength="60"
+                          cachedName="Source"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Message]"
+                          cachedDataType="wstr"
+                          cachedLength="500"
+                          cachedName="Message"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[User]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="User"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[StatusCode]"
+                          cachedDataType="i4"
+                          cachedName="StatusCode"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TimeUtc]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="TimeUtc"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeUtc]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sequence]"
+                          cachedDataType="i4"
+                          cachedName="Sequence"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sequence]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]" />
+                        <inputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AllXml]"
+                          cachedDataType="nText"
+                          cachedName="AllXml"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllXml]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ErrorId]"
+                          dataType="guid"
+                          name="ErrorId" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Application]"
+                          dataType="wstr"
+                          length="60"
+                          name="Application" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Host]"
+                          dataType="wstr"
+                          length="50"
+                          name="Host" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Type]"
+                          dataType="wstr"
+                          length="100"
+                          name="Type" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                          dataType="wstr"
+                          length="60"
+                          name="Source" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Message]"
+                          dataType="wstr"
+                          length="500"
+                          name="Message" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[User]"
+                          dataType="wstr"
+                          length="50"
+                          name="User" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StatusCode]"
+                          dataType="i4"
+                          name="StatusCode" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TimeUtc]"
+                          dataType="dbTimeStamp"
+                          name="TimeUtc" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sequence]"
+                          dataType="i4"
+                          name="Sequence" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AllXml]"
+                          dataType="nText"
+                          name="AllXml" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\For Loop Container\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT TOP (300000) *
+  FROM   ELMAH_Error_archive
+
+ORDER BY ErrorId</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping">"Parameter0:Input",{D170E8BA-29EB-4375-A672-5910D6BB108B};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[SourceDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[SourceDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ErrorId]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ErrorId]"
+                          name="ErrorId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Application]"
+                          length="60"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Application]"
+                          name="Application"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Host]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Host]"
+                          name="Host"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                          length="100"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Type]"
+                          name="Type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                          length="60"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Source]"
+                          name="Source"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                          length="500"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Message]"
+                          name="Message"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User]"
+                          length="50"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[User]"
+                          name="User"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[StatusCode]"
+                          name="StatusCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeUtc]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[TimeUtc]"
+                          name="TimeUtc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sequence]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sequence]"
+                          name="Sequence"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]"
+                          dataType="nText"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllXml]"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[AllXml]"
+                          name="AllXml"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ErrorId]"
+                          dataType="guid"
+                          name="ErrorId" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Application]"
+                          dataType="wstr"
+                          length="60"
+                          name="Application" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Host]"
+                          dataType="wstr"
+                          length="50"
+                          name="Host" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Type]"
+                          dataType="wstr"
+                          length="100"
+                          name="Type" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                          dataType="wstr"
+                          length="60"
+                          name="Source" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Message]"
+                          dataType="wstr"
+                          length="500"
+                          name="Message" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[User]"
+                          dataType="wstr"
+                          length="50"
+                          name="User" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[StatusCode]"
+                          dataType="i4"
+                          name="StatusCode" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TimeUtc]"
+                          dataType="dbTimeStamp"
+                          name="TimeUtc" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sequence]"
+                          dataType="i4"
+                          name="Sequence" />
+                        <externalMetadataColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[AllXml]"
+                          dataType="nText"
+                          name="AllXml" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorId]"
+                          dataType="guid"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorId]"
+                          name="ErrorId" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Application]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Application]"
+                          name="Application" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Host]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Host]"
+                          name="Host" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Type]"
+                          name="Type" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Source]"
+                          dataType="wstr"
+                          length="60"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Source]"
+                          name="Source" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                          dataType="wstr"
+                          length="500"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Message]"
+                          name="Message" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[User]"
+                          name="User" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[StatusCode]"
+                          name="StatusCode" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeUtc]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TimeUtc]"
+                          name="TimeUtc" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sequence]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sequence]"
+                          name="Sequence" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllXml]"
+                          dataType="nText"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[AllXml]"
+                          name="AllXml" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\For Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\For Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\For Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Execute SQL Task"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{830d9e06-3d39-43b3-b43b-e6792b8a6e4c}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+              SQLTask:SqlStatementSource="DELETE&#xA; FROM   ELMAH_Error_archive&#xA; WHERE errorid IN&#xA; (SELECT TOP 300000 errorid &#xA; FROM   ELMAH_Error_archive&#xA;  ORDER BY errorid ASC)&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Execute SQL Task1"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c972932b-e619-4736-95af-fc486e0ae330}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task1"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+              SQLTask:SqlStatementSource="&#xA;&#xA;INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Elmah_Error', '3 lakhs records archived', GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\For Loop Container\Execute SQL Task2"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{47e8fce4-e921-47b1-a849-848f6ccbff26}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task2"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+              SQLTask:SqlStatementSource="&#xA;&#xA;INSERT INTO tblDBArchivestatus&#xA;             (TableName, TableStatus, ArchDatetime)&#xA;VALUES ('Elmah_error', 'Strated 3 lakhs records ', GETDATE())&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{ac77cd4f-b13e-420b-a4f6-48fa6fb0d1e0}"
+          DTS:From="Package\For Loop Container\Data Flow Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\For Loop Container\Execute SQL Task" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{bab0b5b6-002b-43da-a0ef-6a5f1a66877b}"
+          DTS:From="Package\For Loop Container\Execute SQL Task"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\For Loop Container\Execute SQL Task1" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{7fe3785e-1bd9-4f8e-8dda-929849ac1f9d}"
+          DTS:From="Package\For Loop Container\Execute SQL Task2"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\For Loop Container\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Max Iteration"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{6ef33555-9390-4f24-b292-ebd027c0d8bd}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Max Iteration"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2DD032D-F555-43A7-9525-FDC284169D85}"
+          SQLTask:SqlStatementSource="select (Count(*) / 300000)+1 from ELMAH_Error_archive"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::MaxIteration" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C81C3113-F235-456D-94BC-D85BC322E0CB}"
+      DTS:From="Package\Delete one month data from Table destination"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Elmah_Error Log Done" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1C28038-C406-4302-B9D1-011D2CFEB85E}"
+      DTS:From="Package\Elmah_error archive Log Started"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Data Flow Task for Elmah_error" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 10]"
+      DTS:CreationName=""
+      DTS:DTSID="{b4df90d3-bea8-4c4b-90ef-957db548749a}"
+      DTS:From="Package\Max Iteration"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 10"
+      DTS:To="Package\For Loop Container" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{89EC04DE-1010-48B4-92D9-173B3BF718BF}"
+      DTS:From="Package\Data Flow Task for Elmah_error"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Delete one month data from Table destination" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="229.333333333334,42.6666666666667"
+          Id="Package\Data Flow Task for Elmah_error"
+          TopLeft="114.73214204157,149.407143550642" />
+        <NodeLayout
+          Size="273.333333333334,42.6666666666667"
+          Id="Package\Delete Elmah_Error_archive Table source"
+          TopLeft="60,342.066663458744" />
+        <NodeLayout
+          Size="297.333333333334,42.6666666666667"
+          Id="Package\Delete one month data from Table destination"
+          TopLeft="119.99999910593,223.533330218393" />
+        <NodeLayout
+          Size="232,42.6666666666667"
+          Id="Package\Elmah_error archive Log Started"
+          TopLeft="93.749999497086,60" />
+        <NodeLayout
+          Size="185.333333333334,42.6666666666667"
+          Id="Package\Elmah_Error Log Done"
+          TopLeft="111.249999236316,438.299993235468" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\For Loop Container\Data Flow Task"
+          TopLeft="52.7559462701459,149.264281149805" />
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\For Loop Container\Execute SQL Task"
+          TopLeft="52.130946279459,238.280951779882" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\For Loop Container\Execute SQL Task1"
+          TopLeft="57.4880872686353,304.952372716722" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\For Loop Container\Execute SQL Task2"
+          TopLeft="23.738088665619,58.4158755714356" />
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint]"
+          TopLeft="131.443446274803,191.930947816471">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3500039634107"
+              Start="0,0"
+              End="0,38.8500039634107">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8500039634107" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="134.130946279459,280.947618446549">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.02380765584303,24.0047542701736"
+              Start="0,0"
+              End="8.02380765584303,16.5047542701736">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.00237713508682" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.00237713508682"
+                    Point2="0,12.0023771350868"
+                    Point3="4,12.0023771350868" />
+                  <mssgle:LineSegment
+                    End="4.02380765584303,12.0023771350868" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.02380765584303,12.0023771350868"
+                    Point2="8.02380765584303,12.0023771350868"
+                    Point3="8.02380765584303,16.0023771350868" />
+                  <mssgle:LineSegment
+                    End="8.02380765584303,16.5047542701736" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\For Loop Container.PrecedenceConstraints[Constraint 2]"
+          TopLeft="108.404755332286,101.082542238102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.3511909378602,48.1817389117024"
+              Start="0,0"
+              End="20.3511909378602,40.6817389117024">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0908694558512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0908694558512"
+                    Point2="0,24.0908694558512"
+                    Point3="4,24.0908694558512" />
+                  <mssgle:LineSegment
+                    End="16.3511909378602,24.0908694558512" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.3511909378602,24.0908694558512"
+                    Point2="20.3511909378602,24.0908694558512"
+                    Point3="20.3511909378602,28.0908694558512" />
+                  <mssgle:LineSegment
+                    End="20.3511909378602,40.6817389117024" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="260.666666666667,402.666666666667"
+          Size="260.666666666667,445.333333333334"
+          Id="Package\For Loop Container"
+          TopLeft="477.333332439263,131.677773110535" />
+        <NodeLayout
+          Size="142.666666666667,42.6666666666667"
+          Id="Package\Max Iteration"
+          TopLeft="516.624998550241,60" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 10]"
+          TopLeft="587.958331883574,102.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.708333889022,29.0111064438683"
+              Start="0,0"
+              End="19.708333889022,21.5111064438683">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10.5055532219342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10.5055532219342"
+                    Point2="0,14.5055532219342"
+                    Point3="4,14.5055532219342" />
+                  <mssgle:LineSegment
+                    End="15.708333889022,14.5055532219342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.708333889022,14.5055532219342"
+                    Point2="19.708333889022,14.5055532219342"
+                    Point3="19.708333889022,18.5055532219342" />
+                  <mssgle:LineSegment
+                    End="19.708333889022,21.5111064438683" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="268.666665772597,266.19999688506">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-64.749999869614,172.099996350408"
+              Start="0,0"
+              End="-64.749999869614,164.599996350408">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.0499981752042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,82.0499981752042"
+                    Point2="0,86.0499981752042"
+                    Point3="-4,86.0499981752042" />
+                  <mssgle:LineSegment
+                    End="-60.749999869614,86.0499981752042" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-60.749999869614,86.0499981752042"
+                    Point2="-64.749999869614,86.0499981752042"
+                    Point3="-64.749999869614,90.0499981752042" />
+                  <mssgle:LineSegment
+                    End="-64.749999869614,164.599996350408" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="209.749999497086,102.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.6488092111507,46.7404768839753"
+              Start="0,0"
+              End="19.6488092111507,39.2404768839753">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3702384419877" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.3702384419877"
+                    Point2="0,23.3702384419877"
+                    Point3="4,23.3702384419877" />
+                  <mssgle:LineSegment
+                    End="15.6488092111507,23.3702384419877" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.6488092111507,23.3702384419877"
+                    Point2="19.6488092111507,23.3702384419877"
+                    Point3="19.6488092111507,27.3702384419877" />
+                  <mssgle:LineSegment
+                    End="19.6488092111507,39.2404768839753" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="229.398808708237,192.073810217309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.26785706436,31.4595200010843"
+              Start="0,0"
+              End="39.26785706436,23.9595200010843">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.7297600005422" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.7297600005422"
+                    Point2="0,15.7297600005422"
+                    Point3="4,15.7297600005422" />
+                  <mssgle:LineSegment
+                    End="35.26785706436,15.7297600005422" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.26785706436,15.7297600005422"
+                    Point2="39.26785706436,15.7297600005422"
+                    Point3="39.26785706436,19.7297600005422" />
+                  <mssgle:LineSegment
+                    End="39.26785706436,23.9595200010843" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task for Elmah_error">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Data Flow Task for Elmah_error\OLE DB Source"
+          TopLeft="164,61" />
+        <NodeLayout
+          Size="170.666666666667,42"
+          Id="Package\Data Flow Task for Elmah_error\OLE DB Destination"
+          TopLeft="189,175" />
+        <EdgeLayout
+          Id="Package\Data Flow Task for Elmah_error.Paths[OLE DB Source Output]"
+          TopLeft="239,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.5,72"
+              Start="0,0"
+              End="35.5,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32"
+                    Point2="0,36"
+                    Point3="4,36" />
+                  <mssgle:LineSegment
+                    End="31.5,36" />
+                  <mssgle:CubicBezierSegment
+                    Point1="31.5,36"
+                    Point2="35.5,36"
+                    Point3="35.5,40" />
+                  <mssgle:LineSegment
+                    End="35.5,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task for Elmah_error\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task for Elmah_error\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\For Loop Container\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\For Loop Container\Data Flow Task\OLE DB Destination"
+          TopLeft="282.499995790422,137.799997535944" />
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\For Loop Container\Data Flow Task\OLE DB Source"
+          TopLeft="275.624995892868,60.0833329265316" />
+        <EdgeLayout
+          Id="Package\For Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="350.958329226201,102.749999593198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.5416665642212,35.0499979427456"
+              Start="0,0"
+              End="17.5416665642212,27.5499979427456">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5249989713728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5249989713728"
+                    Point2="0,17.5249989713728"
+                    Point3="4,17.5249989713728" />
+                  <mssgle:LineSegment
+                    End="13.5416665642212,17.5249989713728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.5416665642212,17.5249989713728"
+                    Point2="17.5416665642212,17.5249989713728"
+                    Point3="17.5416665642212,21.5249989713728" />
+                  <mssgle:LineSegment
+                    End="17.5416665642212,27.5499979427456" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Container\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\For Loop Container\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

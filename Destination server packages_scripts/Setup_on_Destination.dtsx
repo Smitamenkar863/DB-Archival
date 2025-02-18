@@ -1,0 +1,717 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/19/2024 11:00:19 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="KVITSPL-0390"
+  DTS:CreatorName="AzureAD\SmitaMenkar"
+  DTS:DTSID="{3923CFD1-65D1-4578-823B-952B9850CC29}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.180"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Setup_on_Destination"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{7995C40D-496A-42EA-B0BE-A464339645B4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[4. Archive Log Table Creation.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F869CB0F-71E3-4CEA-847C-E5CB9DFD1EF2}"
+      DTS:ObjectName="4. Archive Log Table Creation.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\4. Archive Log Table Creation.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[5. Months Data Creation for Archive.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{F10E51F8-BD39-4C37-9AA7-CAD4B45E1509}"
+      DTS:ObjectName="5. Months Data Creation for Archive.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\5. Months Data Creation for Archive.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[6. ArchieveDBConfiguration Table script.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{422B1102-E41D-41C8-B0DF-B4FB6FB0ACA7}"
+      DTS:ObjectName="6. ArchieveDBConfiguration Table script.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\6. ArchieveDBConfiguration Table script.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[7. Account Table of old records to archive.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{2ACFF757-FCB9-4829-858A-BCFEF3646BEF}"
+      DTS:ObjectName="7. Account Table of old records to archive.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\7. Account Table of old records to archive.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4C138366-4692-46E5-904F-49C23FA0D812}"
+      DTS:ObjectName="DestinationDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::dest_dbname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::dest_password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::dest_servername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.196.9.82;User ID=sa;Initial Catalog=JMCosacsDBArchive;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="8H8r91Y0GQ=="
+            IV="RQiIYgbgWaY=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>RQiIYgbgWabtXzjT8Z7EB5iTHF4+0Bws0BSZIIhcemeiD2/4e/sdplROmnLu/fBjv6T93DsD3cDFzimd72Pry+Ii7aoKpJBfV7g9JwPq16OQkW1pw/th0dd61uzATbvlRyRrViLZjiLSOQN96CEyirIH1e1CJhCg</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[First_phase_table_creation_at_destination.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{D2A6DC39-E4D3-46DE-A17F-812AECDFC41D}"
+      DTS:ObjectName="First_phase_table_creation_at_destination.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\First_phase_table_creation_at_destination.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[PhaseOneReportingTables.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C446939A-77DF-4FB1-87D3-FD2463DB6D64}"
+      DTS:ObjectName="PhaseOneReportingTables.sql">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="D:\DBArchive_Project\DBArchive_firstphase_Deployment\Destination server packages_scripts\PhaseOneReportingTables.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+      DTS:ObjectName="SourceDB">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Package::source_dbname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Package::source_password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Package::source_servername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=10.196.9.82;User ID=sa;Initial Catalog=cosacs;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <EncryptedData
+            Type="http://www.w3.org/2001/04/xmlenc#Element"
+            Salt="kHqUIPNOfQ=="
+            IV="fFNLj89wSUo=" xmlns="http://www.w3.org/2001/04/xmlenc#">
+            <EncryptionMethod
+              Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc" />
+            <CipherData>
+              <CipherValue>fFNLj89wSUpIvmniqsAR+VgoCfPTosFmYgw+dcCMcCvEDby0m2qa3SOkBzPdrnsV3Iwwt1BbH5dLk5aGcfpWEYjtoRCseD9292vT/HXmatu9UNRoyOtBwEEjinoDv5ZAdpPPTQdxqXvL/5Tr2pP5yNx3jlcNziqw</CipherValue>
+            </CipherData>
+          </EncryptedData>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{6E54E4AC-E95D-4E8B-AFE0-BBC68996FB64}"
+      DTS:ObjectName="dest_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">JMCosacsDBArchive</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{FCED5AF1-850B-405A-AA47-E17A2EAE75F2}"
+      DTS:ObjectName="dest_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{D50D2568-DC0E-42CC-A637-BE43E5582AF7}"
+      DTS:ObjectName="dest_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.82</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{FC25EED9-FBDD-46D9-8D0E-8DFA36CA954D}"
+      DTS:ObjectName="source_dbname">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">cosacs</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{3D74AA14-8EE5-4B32-B1B9-8B6872BC4669}"
+      DTS:ObjectName="source_password">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E1E13AD9-4209-4B64-9422-E630B49D77E3}"
+      DTS:ObjectName="source_servername">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">10.196.9.82</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Acct_Five_Current table creation"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F50D68A7-A0A3-4C66-A397-6A273FDD62DD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Acct_Five_Current table creation"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="7. Account Table of old records to archive.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Add linked server"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{5A836668-46FD-42D5-8D69-42759DF603D8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Add linked server"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="Add Link Server to DB Archival.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ArchiveDBConfiguration at destination"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A8E8FAEB-5519-4FB5-8718-7C2F2DCB9DCC}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ArchiveDBConfiguration at destination"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4C138366-4692-46E5-904F-49C23FA0D812}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="6. ArchieveDBConfiguration Table script.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ArchiveDBConfiguration at Source"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{ACFBBF45-8913-483E-8B19-725E0E6ADCE6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ArchiveDBConfiguration at Source"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="6. ArchieveDBConfiguration Table script.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Constraint creation on new tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{00F40BBB-0A36-4A6C-A0F5-4C1732F59C9E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Constraint creation on new tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStatementSource="ALTER TABLE [dbo].[StockInfoAudit_New] ADD  DEFAULT ((0)) FOR [ID]&#xA; &#xA;&#xA;&#xA;ALTER TABLE [dbo].[StockInfoAudit_New] ADD  DEFAULT ((0)) FOR [RepossessedItem]&#xA;&#xA; &#xA;&#xA;ALTER TABLE [dbo].[StockInfoAudit_New] ADD  DEFAULT ((0)) FOR [SparePart]&#xA;&#xA;&#xA;&#xA;ALTER TABLE [dbo].[ELMAH_Error_New] ADD  CONSTRAINT [DF_ELMAH_Error_ErrorId]  DEFAULT (newid()) FOR [ErrorId]&#xA; &#xA;&#xA;&#xA;&#xA;ALTER TABLE [dbo].[bsapilog_new] ADD  CONSTRAINT [DF_BSAPILog_CreatedOn]  DEFAULT (getdate()) FOR [CreatedOn]&#xA; &#xA; &#xA; " xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Create Log Table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E11DA1A2-16EA-4BF1-A849-6CEAC1B1C760}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Create Log Table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="4. Archive Log Table Creation.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Letter table Creation"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{821B5D9D-ADF0-4E85-809C-8AE4C501FE5E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Letter table Creation"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4C138366-4692-46E5-904F-49C23FA0D812}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="Letter_table_creation.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Months Creation for archival"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{10F69A17-B66D-4E82-8D8A-9C94CA6BC0C8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Months Creation for archival"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="5. Months Data Creation for Archive.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Reporting Table Creation"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{91550880-05DB-4555-A610-B47D651E40DA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Reporting Table Creation"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="PhaseOneReportingTables.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Table Creation in new DB 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{5C7158A6-9973-4A87-A167-792F12875346}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Table Creation in new DB 1"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4C138366-4692-46E5-904F-49C23FA0D812}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="First_phase_table_creation_at_destination.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Table Creation in old DB"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{19DD5935-EAB8-4704-988F-1F0CE408287F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Table Creation in old DB"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{23F0C1E8-1963-4519-9D97-9FC41FEFC92D}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="First_phase_table_creation.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B75EDE54-E596-4EFE-BD7B-3CD1492AB665}"
+      DTS:From="Package\Add linked server"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Table Creation in old DB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D22D0958-5922-4926-9C48-075E55666A77}"
+      DTS:From="Package\Reporting Table Creation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\ArchiveDBConfiguration at destination" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A84A89D3-B08F-4E26-A053-C6DE692F5E4C}"
+      DTS:From="Package\Acct_Five_Current table creation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Create Log Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4F63C97-0ED7-4912-A022-9DC54F87D315}"
+      DTS:From="Package\Table Creation in old DB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Constraint creation on new tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{B9E89449-1146-4904-8E1F-C66681C25EF7}"
+      DTS:From="Package\Table Creation in new DB 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Reporting Table Creation" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6EA3783-5571-4F1D-B748-B97875056685}"
+      DTS:From="Package\ArchiveDBConfiguration at destination"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Acct_Five_Current table creation" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="233.333333333334,42.6666666666667"
+          Id="Package\Acct_Five_Current table creation"
+          TopLeft="776.927072650288,207.199992584586" />
+        <NodeLayout
+          Size="258.666666666667,42.6666666666667"
+          Id="Package\ArchiveDBConfiguration at destination"
+          TopLeft="573.593742346857,113.106543066328" />
+        <NodeLayout
+          Size="238.666666666667,42.6666666666667"
+          Id="Package\ArchiveDBConfiguration at Source"
+          TopLeft="73.7499997951085,494.287492413148" />
+        <NodeLayout
+          Size="237.333333333334,42.6666666666667"
+          Id="Package\Constraint creation on new tables"
+          TopLeft="57.0089277219292,167.889881323898" />
+        <NodeLayout
+          Size="160,42.6666666666667"
+          Id="Package\Create Log Table"
+          TopLeft="871.659214095811,396.052369969289" />
+        <NodeLayout
+          Size="176,42.6666666666667"
+          Id="Package\Letter table Creation"
+          TopLeft="686.78570494588,684.918443507278" />
+        <NodeLayout
+          Size="212,42.6666666666667"
+          Id="Package\Months Creation for archival"
+          TopLeft="969.903260250909,291.692847790846" />
+        <NodeLayout
+          Size="196.666666666667,42.6666666666667"
+          Id="Package\Reporting Table Creation"
+          TopLeft="251.145830485038,428.469042854209" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\Table Creation in new DB 1"
+          TopLeft="58.2589277033026,266.1964242585" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Table Creation in old DB"
+          TopLeft="56.8824405226455,89.4857114253729" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Add linked server"
+          TopLeft="94.2633923465782,23.7857149332758" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="174.930059013245,66.4523815999425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.7142851572661,23.0333298254304"
+              Start="0,0"
+              End="-20.7142851572661,15.5333298254304">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.51666491271522" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.51666491271522"
+                    Point2="0,11.5166649127152"
+                    Point3="-4,11.5166649127152" />
+                  <mssgle:LineSegment
+                    End="-16.7142851572661,11.5166649127152" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.7142851572661,11.5166649127152"
+                    Point2="-20.7142851572661,11.5166649127152"
+                    Point3="-20.7142851572661,15.5166649127152" />
+                  <mssgle:LineSegment
+                    End="-20.7142851572661,15.5333298254304" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="154.215773855979,132.15237809204">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.459820532617,35.7375032318585"
+              Start="0,0"
+              End="21.459820532617,28.2375032318585">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8687516159292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8687516159292"
+                    Point2="0,17.8687516159292"
+                    Point3="4,17.8687516159292" />
+                  <mssgle:LineSegment
+                    End="17.459820532617,17.8687516159292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.459820532617,17.8687516159292"
+                    Point2="21.459820532617,17.8687516159292"
+                    Point3="21.459820532617,21.8687516159292" />
+                  <mssgle:LineSegment
+                    End="21.459820532617,28.2375032318585" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="162.258927703303,308.863090925167">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.775791670625,119.605951929043"
+              Start="0,0"
+              End="155.775791670625,112.105951929043">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.1844434816428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,67.1844434816428"
+                    Point2="0,71.1844434816428"
+                    Point3="4,71.1844434816428" />
+                  <mssgle:LineSegment
+                    End="151.775791670625,71.1844434816428" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151.775791670625,71.1844434816428"
+                    Point2="155.775791670625,71.1844434816428"
+                    Point3="155.775791670625,75.1844434816428" />
+                  <mssgle:LineSegment
+                    End="155.775791670625,112.105951929043" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="380.923608262816,428.469042854209">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="280.225689639596,-272.695833121215"
+              Start="0,0"
+              End="280.225689639596,-265.195833121215">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-132.674424115564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-132.674424115564"
+                    Point2="0,-136.674424115564"
+                    Point3="4,-136.674424115564" />
+                  <mssgle:LineSegment
+                    End="276.225689639596,-136.674424115564" />
+                  <mssgle:CubicBezierSegment
+                    Point1="276.225689639596,-136.674424115564"
+                    Point2="280.225689639596,-136.674424115564"
+                    Point3="280.225689639596,-140.674424115564" />
+                  <mssgle:LineSegment
+                    End="280.225689639596,-265.195833121215" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="744.704853457968,155.773209732994">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.888885858987,51.4267828515914"
+              Start="0,0"
+              End="148.888885858987,43.9267828515914">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7604020937777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7604020937777"
+                    Point2="0,20.7604020937777"
+                    Point3="4,20.7604020937777" />
+                  <mssgle:LineSegment
+                    End="144.888885858987,20.7604020937777" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.888885858987,20.7604020937777"
+                    Point2="148.888885858987,20.7604020937777"
+                    Point3="148.888885858987,24.7604020937777" />
+                  <mssgle:LineSegment
+                    End="148.888885858987,43.9267828515914" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="893.593739316955,249.866659251252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.0654747788561,146.185710718036"
+              Start="0,0"
+              End="58.0654747788561,138.685710718036">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,69.0928553590182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,69.0928553590182"
+                    Point2="0,73.0928553590182"
+                    Point3="4,73.0928553590182" />
+                  <mssgle:LineSegment
+                    End="54.0654747788561,73.0928553590182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.0654747788561,73.0928553590182"
+                    Point2="58.0654747788561,73.0928553590182"
+                    Point3="58.0654747788561,77.0928553590182" />
+                  <mssgle:LineSegment
+                    End="58.0654747788561,138.685710718036" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
